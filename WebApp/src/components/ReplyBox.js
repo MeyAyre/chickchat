@@ -26,9 +26,14 @@ export class ReplyBox extends React.Component {
             <div>
 
                 {/* Exercise 2: Render a text input and a button */}
-                <input value= {this.state.text} onChange = {this.updateText} />
-                <button id="clicking" onClick= {this.sendReply} disabled={this.state.text === ""}
-                onkeydown = {click}>
+                <input value= {this.state.text} onChange = {this.updateText}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    this.sendReply()
+                  }
+                }}
+                 />
+                <button id="clicking" onClick= {this.sendReply} disabled={this.state.text === ""}>
                         send &#2639;</button>
             </div>
         )

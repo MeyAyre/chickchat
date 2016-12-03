@@ -94,7 +94,13 @@ function getMessageBody (message) {
     if (message.data) {
         return <img src={message.data} style={imageStyle} />
     } else {
-        return message.text
+        const text = message.text
+        /*const bold = text.replace(/(_.*_)/gi, function boldMachine(x){
+          <strong> x </strong>
+        }) */
+        return (
+          <span>{text}</span>
+        )
     }
 }
 
