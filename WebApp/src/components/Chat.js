@@ -3,6 +3,8 @@ import React, {PropTypes} from "react"
 import {connect} from "react-redux"
 import ReplyBox from "./ReplyBox"
 
+const myId = "ee7cea725eedb19792a57636d9a1aaf54a7f440f0cf1926a36bbf25f22e6324d"
+
 export class Chat extends React.Component {
     render () {
         return (
@@ -98,9 +100,15 @@ function getMessageBody (message) {
         /*const bold = text.replace(/(_.*_)/gi, function boldMachine(x){
           <strong> x </strong>
         }) */
-        return (
-          <span>{text}</span>
-        )
+        if (message.author.userId === myId){
+          return (
+            <span style={{float:"right"}}>{text}</span>
+          )
+        } else{
+            return (
+              <span>{text}</span>
+                )
+        }
     }
 }
 
