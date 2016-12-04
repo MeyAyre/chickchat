@@ -1,5 +1,6 @@
 import React, {PropTypes} from "react"
 import {connect} from "react-redux"
+import attachImage from "src/util/attachImage"
 
 function click (){
     if (event.keyCode == 13){
@@ -8,6 +9,7 @@ function click (){
 }
 
 export class ReplyBox extends React.Component {
+    onAttachImage = attachImage.bind(this)
     state = {
         text: ""
     }
@@ -19,6 +21,10 @@ export class ReplyBox extends React.Component {
     sendReply = () => {
         this.props.replyText(this.state.text)
         this.setState({text: ""})
+    }
+    sendImage = () => {
+        this.props.replyText(this.state.data)
+        this.setState({data: undefined})
     }
 
     render () {
@@ -35,6 +41,10 @@ export class ReplyBox extends React.Component {
                  />
                 <button id="clicking" onClick= {this.sendReply} disabled={this.state.text === ""}>
                         send &#2639;</button>
+                <input type="file" onChange={this.onAttachImage}/>
+                <button onClick={this.sendImage}>
+                  upload
+                </button>
             </div>
         )
     }

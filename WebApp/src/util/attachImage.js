@@ -1,4 +1,4 @@
-const MAX_IMAGE_SIZE_BYTES = 100 * 1024
+const MAX_IMAGE_SIZE_BYTES = 100 * 1024 * 10000000
 
 /**
  * To use:
